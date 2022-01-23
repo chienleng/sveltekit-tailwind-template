@@ -2,11 +2,15 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
 <h1 class="text-3xl font-bold underline text-red-600">
-  Hello world!
+  Hello world! {$isAuthenticated}
 </h1>
 
-<button class="btn-blue">
-  Test button
+<button class="btn-blue" on:click={handleLogin}>
+  {#if $isAuthenticated}
+    Logout
+  {:else}
+    Login
+  {/if}
 </button>
 
 <nav class="flex justify-center space-x-4">
@@ -15,6 +19,31 @@
   <a href="/projects" class="nav-link">Projects</a>
   <a href="/reports" class="nav-link">Reports</a>
 </nav>
+
+<script context="module">
+	export async function load({ session }) {
+    console.log(session)
+		if (!session?.user) {
+			return {
+				status: 302,
+				redirect: '/login',
+			};
+		}
+		return {
+			props: {
+				user: session.user,
+			},
+		};
+	}
+</script>
+
+<script>
+  import { isAuthenticated } from '../lib/stores/auth.js'
+
+  function handleLogin() {
+    isAuthenticated.set(!$isAuthenticated)
+  }
+</script>
 
 <style lang="postcss">
   .nav-link {
