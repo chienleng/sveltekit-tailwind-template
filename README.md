@@ -4,7 +4,7 @@ Everything _I_ need to quickly setup a SvelteKit and Tailwind project.
 
 Core packages:
 
-- [SvelteKit](https://kit.svelte.dev/) - for building the app
+- [SvelteKit](https://kit.svelte.dev/) - foundation
 - [Tailwind CSS](https://tailwindcss.com/) - for styling
 
 Optional packages:
