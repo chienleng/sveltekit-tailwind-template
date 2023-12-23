@@ -2,6 +2,10 @@
 	"name": "sveltekit-tailwind-template",
 	"version": "0.1.0",
 	"private": true,
+	"author": {
+		"name": "Steven Tan",
+		"email": "steven@steventan.com.au"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
